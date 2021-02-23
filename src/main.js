@@ -10,7 +10,6 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 //借助 babel-plugin-component，我们可以只引入需要的组件，以达到减小项目体积的目的。
 
-
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 
