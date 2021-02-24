@@ -1,112 +1,51 @@
 <template>
-    <div>
-      <!--整个页面的框架-->
-      <el-container style="height: 500px; border: 1px solid #eee">
-        <!--构建左侧菜单-->
-        <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-          <!--左侧菜单内容-->
-          <!--<el-menu :default-openeds="['1', '3']">&lt;!&ndash;默认打开  通过index值关联&ndash;&gt;-->
-          <el-menu :default-openeds="['', '3']"><!--默认打开  通过index值关联-->
-            <h3>JY__嘉援管理系统</h3>
-            <el-submenu index="1">
-              <!--<template slot="title"><i class="el-icon-message"></i>订单管理模块</template>-->
-              <template slot="title"><i class="el-icon-menu"></i>用户管理模块</template>
-              <el-menu-item-group>
-                <template slot="title">用户管理</template>
-                <el-menu-item index="1-1">新增用户</el-menu-item>
-                <el-menu-item index="1-2">删除用户</el-menu-item>
-                <el-menu-item index="1-3">修改用户</el-menu-item>
-                <el-menu-item index="1-4">查询用户</el-menu-item>
-              </el-menu-item-group>
-              <!--<el-menu-item-group title="分组2">
-                <el-menu-item index="1-3">选项3</el-menu-item>
-              </el-menu-item-group>
-              <el-submenu index="1-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="1-4-1">选项4-1</el-menu-item>
-              </el-submenu>-->
-            </el-submenu>
-            <el-submenu index="2">
-              <template slot="title"><i class="el-icon-menu"></i>公司管理模块</template>
-              <el-menu-item-group>
-                <template slot="title">公司管理</template>
-                <el-menu-item index="2-1">新增公司信息</el-menu-item>
-                <el-menu-item index="2-2">修改公司信息</el-menu-item>
-              </el-menu-item-group>
-              <el-menu-item-group title="公司公告">
-                <el-menu-item index="2-3">选项3</el-menu-item>
-              </el-menu-item-group>
-              <el-submenu index="2-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="2-4-1">选项4-1</el-menu-item>
-              </el-submenu>
-            </el-submenu>
-            <!--el-submenu 可以展开的菜单   index菜单的下标  文本类型  不能是数值类型-->
-            <el-submenu index="3" :default-active="[3-1]"><!--先默认选中这个    字符串类型    之后可以删除-->
-              <!--<template slot="title"><i class="el-icon-setting"></i>订单管理模块</template>-->
-              <!--template 对应菜单名   i标签  设置菜单图标-->
-              <template slot="title"><i class="el-icon-menu"></i>订单管理模块</template>
-              <el-menu-item-group>
-                <template slot="title">订单CURD</template>
-                <el-menu-item index="3-1">查询订单</el-menu-item>
-                <el-menu-item index="3-2">新增订单</el-menu-item>
-                <el-menu-item index="3-2">修改订单</el-menu-item>
-              </el-menu-item-group>
-              <el-menu-item-group title="分组2">
-                <el-menu-item index="3-3">选项3</el-menu-item>
-              </el-menu-item-group>
-              <el-submenu index="3-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="3-4-1">选项4-1</el-menu-item>
-              </el-submenu>
-            </el-submenu>
-          </el-menu>
-        </el-aside>
+  <el-container style="height: 500px; border: 1px solid #eee">
+    <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+      <!--动态读取router里面的东西-->
+      <!--使用route动态设置菜单栏-->
+      <h3>嘉援道路救援</h3>
+      <el-menu router>
+        <el-submenu v-for="(item,index) in $router.options.routes" :key="index" :index="index+''" v-if="item.show">
+          <template slot="title"><i class="el-icon-setting"></i>{{item.name}}</template>
+          <el-menu-item v-for="(item_child,index_child) in item.children" :key="index_child" :index="item_child.path"
+            :class="$route.path==item_child.path?'is-active':''">{{item_child.name}}
+          </el-menu-item>
+        </el-submenu>
+      </el-menu>
 
-        <el-container>
-          <el-header style="text-align: right; font-size: 12px">
-            <el-dropdown>
-              <i class="el-icon-setting" style="margin-right: 15px"></i>
-              <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>查看</el-dropdown-item>
-                <el-dropdown-item>新增</el-dropdown-item>
-                <el-dropdown-item>删除</el-dropdown-item>
-              </el-dropdown-menu>
-            </el-dropdown>
-            <span>董文道</span>
-          </el-header>
-
-          <el-main>
-            <router-view></router-view>
-          </el-main>
-        </el-container>
-      </el-container>
-    </div>
+<!--          <el-menu router :default-openeds="['', '','2']">
+        &lt;!&ndash;router里面有几个对象就有几个submenu&ndash;&gt;
+        &lt;!&ndash;for循环   v-for&ndash;&gt;
+        &lt;!&ndash;取到routes   $router.options.routes&ndash;&gt;
+        &lt;!&ndash;在$router.options.routes 后面设置index属性，获取当前对象的下标，作为index属性&ndash;&gt;
+        &lt;!&ndash;(index,item)  拿到下标的方式，index写在item的后面，item还是对象，index是下标&ndash;&gt;
+        &lt;!&ndash;index="index+''   使得导航一和导航二的  index不一样，  就不会同时打开，而是分别打开&ndash;&gt;
+        <el-submenu v-for="(item,index) in $router.options.routes" :key="index" :index="index+''">
+          &lt;!&ndash;导航 name 不能写死   写成{{item.name}}&ndash;&gt;
+          <template slot="title"><i class="el-icon-setting"></i>{{item.name}}</template>
+          &lt;!&ndash;导航的下一层页面  添加el-item   遍历它的children属性   可以动态生成菜单&ndash;&gt;
+          &lt;!&ndash;children 里面也要加一个index， 不然点击不了&ndash;&gt;
+          &lt;!&ndash;class="is-active"   全部变为选项蓝色&ndash;&gt;
+          <el-menu-item v-for="(item_child,index_child) in item.children" :key="index_child" :index="item_child.path"
+                        :class="$route.path==item_child.path?'is-active':''">{{item_child.name}}</el-menu-item>
+        </el-submenu>
+      </el-menu>-->
+    </el-aside>
+    <el-container>
+      <el-main>
+        <!--main在这里加<router-view></router-view>  显示page1234的内容-->
+        <router-view></router-view>
+      </el-main>
+    </el-container>
+  </el-container>
 </template>
-
-<style>
-  .el-header {
-    background-color: #B3C0D1;
-    color: #333;
-    line-height: 60px;
-  }
-
-  .el-aside {
-    color: #333;
-  }
-</style>
 
 <script>
   export default {
-    data() {
-      const item = {
-        date: '2021-02-23',
-        name: '董文道',
-        address: '山东科技大学'
-      };
-      return {
-        tableData: Array(20).fill(item)
-      }
-    }
-  };
+    name: ""
+  }
 </script>
+
+<style scoped>
+
+</style>
