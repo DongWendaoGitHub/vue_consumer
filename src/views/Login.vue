@@ -78,7 +78,7 @@
                     if (valid) {
                       this.$router.push("/System_Home_Consume")
                         this.$message({
-                            message: '恭喜你，提交成功',
+                            message: '嘉援欢迎您！',
                             type: 'success'
                         });
                     } else {

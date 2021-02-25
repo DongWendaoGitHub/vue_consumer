@@ -4,9 +4,9 @@
       <!--动态读取router里面的东西-->
       <!--使用route动态设置菜单栏-->
       <h3>嘉援道路救援</h3>
-      <el-menu router>
+      <el-menu router class="sidebar">
         <el-submenu v-for="(item,index) in $router.options.routes" :key="index" :index="index+''" v-if="item.show">
-          <template slot="title"><i class="el-icon-setting"></i>{{item.name}}</template>
+          <template slot="title"><i class="el-icon-menu"></i>{{item.name}}</template>
           <el-menu-item v-for="(item_child,index_child) in item.children" :key="index_child" :index="item_child.path"
             :class="$route.path==item_child.path?'is-active':''">{{item_child.name}}
           </el-menu-item>
@@ -46,6 +46,12 @@
   }
 </script>
 
-<style scoped>
-
+<style >
+  .sidebar{
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
+  .sidebar >ul{
+    height: 100%;
+  }
 </style>

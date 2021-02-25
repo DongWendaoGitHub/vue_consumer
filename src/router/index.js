@@ -43,14 +43,14 @@ const routes = [
     show: true,
     children:[
       {
-        path: '/system_home_consume/addOrders',
-        name: '新增订单',
-        component: AddOrders
-      },
-      {
         path: '/system_home_consume/selectOrders',
         name: '查询订单',
         component: SelectOrders
+      },
+      {
+        path: '/system_home_consume/addOrders',
+        name: '新增订单',
+        component: AddOrders
       },
       {
         path: '/system_home_consume/updateOrders',
