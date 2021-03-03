@@ -14,10 +14,10 @@
             <el-input type="password" auto-complete="false" v-model="loginForm.password" placeholder="请输入密码"></el-input>
           </el-form-item>
 
-          <el-form-item prop="code">
-            <el-input type="text" auto-complete="false" v-model="loginForm.code" placeholder="点击图片更换验证码" class="loginCode"></el-input>
-            <img :src="captchaUrl" @click="updateCaptcha">
-          </el-form-item>
+<!--          <el-form-item prop="code">-->
+<!--            <el-input type="text" auto-complete="false" v-model="loginForm.code" placeholder="点击图片更换验证码" class="loginCode"></el-input>-->
+<!--            <img :src="captchaUrl" @click="updateCaptcha">-->
+<!--          </el-form-item>-->
 
           <el-form-item>
             <el-checkbox v-model="checked" class="loginRemember">记住密码</el-checkbox>
@@ -46,8 +46,8 @@
                 captchaUrl:'/captcha?time='+new Date(), /*加time参数，不加可能看不清或者想要更换验证码时无法接收到刷新的验证码*/        /*验证码*/
                 loginForm:{
                     username:'17685841305',
-                    password:'aaa',
-                    code:'aaa'              /*验证码*/
+                    password:'liusiping',
+                  //  code:'aaa'              /*验证码*/
                 },
                 checked:true,
 
@@ -57,7 +57,7 @@
                       { validator: checkMobile, trigger: 'blur' }
                       ],
                     password:[{required:true,message:'密码不能为空', trigger:'blur'}],
-                    code:[{required:true,message:'验证码不能为空', trigger:'blur'}]
+                    //code:[{required:true,message:'验证码不能为空', trigger:'blur'}]
                 }
 
             }
@@ -74,6 +74,7 @@
                 this.captchaUrl = '/captcha?time='+new Date();
             },
             submitLogin(){
+
                 this.$refs.loginForm.validate((valid) => {
                     if (valid) {
                       this.$router.push("/System_Home_Consume")

@@ -13,7 +13,10 @@ import SelectOrdersById from "../views/Orders/SelectOrdersById";
 import AddCustomers from "../views/customers/AddCustomers";
 import SelectCustomers from "../views/customers/SelectCustomers";
 import UpdateCustomers from "../views/customers/UpdateCustomers";
-
+//引入司机
+import AddDrivers from "../views/drivers/AddDrivers";
+import SelectDrivers from "../views/drivers/SelectDrivers";
+import UpdateDrivers from "../views/drivers/UpdateDrivers";
 Vue.use(VueRouter)
 
 const routes = [
@@ -70,7 +73,7 @@ const routes = [
       }
     ]
   },
-  //2  订单管理
+  //3  客户管理
   {
     path: '/system_home_consume',
     name: '客户管理',
@@ -92,6 +95,30 @@ const routes = [
         path: '/system_home_consume/updateCustomers',
         name: '修改客户',
         component: UpdateCustomers
+      }
+    ]
+  },
+  //4  司机管理
+  {
+    path: '/system_home_consume',
+    name: '司机管理',
+    component: System_Home_Consume,
+    show: true,
+    children:[
+      {
+        path: '/system_home_consume/selectDrivers',
+        name: '查询司机',
+        component: SelectDrivers
+      },
+      {
+        path: '/system_home_consume/addDrivers',
+        name: '新增司机',
+        component: AddDrivers
+      },
+      {
+        path: '/system_home_consume/updateDrivers',
+        name: '修改司机',
+        component: UpdateDrivers
       }
     ]
   }
