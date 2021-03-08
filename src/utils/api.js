@@ -54,6 +54,31 @@ axios.interceptors.response.use(success=>{
         return;/*error   返回空*/
 });
 
+export function get (url, params = {}) {
+  return new Promise((resolve, reject) => {
+    axios.get(url, {params: params})
+      .then(response => {
+        resolve(response.data)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  })
+}
+
+export function post (url, data = {}) {
+  return new Promise((resolve, reject) => {
+    axios.post(url, data)
+      .then(response => {
+        resolve(response.data)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  })
+}
+
+
 let base = '';
 /*传送  json  格式的 post  请求*/
 export const postRequest=(url,params)=>{

@@ -49,7 +49,6 @@
         const _this = this
         this.$refs[formName].validate((valid) => {
           if (valid) {
-
             // alert('创建成功!');
             //    给后台,调SpringboottestApplication
             axios.post('http://127.0.0.1:8081/customer/customers/insertCustomers',this.ruleForm).then(function (resp) {

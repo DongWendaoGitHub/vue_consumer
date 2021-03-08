@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+import Registered from "../views/Registered";
 import Login from '../views/Login.vue'
 import Welcome from "../views/Welcome";
 import System_Home_Consume from "../views/System_Home_Consume";
@@ -25,9 +26,15 @@ const routes = [
     path: '/',
     name: '登陆',
     component: Login
+  },
+  //1   注册
+  {
+    path: '/Registered',
+    name: '注册',
+    component: Registered
   }
   ,
-  //1  管理员
+  //2  管理员
   {
     path: '/system_home_consume',
     name: '管理员，欢迎您',
@@ -43,7 +50,7 @@ const routes = [
     ]
   }
   ,
-  //2  订单管理
+  //3  订单管理
   {
     path: '/system_home_consume',
     name: '订单管理',
@@ -73,7 +80,7 @@ const routes = [
       }
     ]
   },
-  //3  客户管理
+  //4  客户管理
   {
     path: '/system_home_consume',
     name: '客户管理',
@@ -98,7 +105,7 @@ const routes = [
       }
     ]
   },
-  //4  司机管理
+  //5  司机管理
   {
     path: '/system_home_consume',
     name: '司机管理',

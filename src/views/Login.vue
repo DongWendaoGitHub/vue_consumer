@@ -1,5 +1,8 @@
 <template>
     <div class="login-resign-background">
+<!--      <div>-->
+<!--        <el-button class="resign">点击这里进行注册</el-button>-->
+<!--      </div>-->
       <div class="jiayuan-title">欢迎来到嘉援道路救援</div>
       <div class="loginContainer">
         <!--el-form   表单-->
@@ -23,12 +26,19 @@
             <el-checkbox v-model="checked" class="loginRemember">记住密码</el-checkbox>
             <el-button type="primary" class="loginButton" @click="submitLogin">登陆</el-button>
           </el-form-item>
+
+          <el-form-item>
+            <el-button type="primary" class="forgetpassword" @click="forgetpassword">忘记密码</el-button>
+            <el-button style="float:right" type="primary" class="registeredButton" @click="submitregistered">注册</el-button>
+          </el-form-item>
+
         </el-form>
       </div>
     </div>
 </template>
 
 <script>
+  import {getLoginStatus} from "../api/index"
     export default {
         name: "Login",
         data(){
@@ -45,8 +55,8 @@
                 /*new Date()随时随地最新的时间*/
                 captchaUrl:'/captcha?time='+new Date(), /*加time参数，不加可能看不清或者想要更换验证码时无法接收到刷新的验证码*/        /*验证码*/
                 loginForm:{
-                    username:'17685841305',
-                    password:'liusiping',
+                    username:'',
+                    password:'',
                   //  code:'aaa'              /*验证码*/
                 },
                 checked:true,
@@ -65,6 +75,11 @@
         ,
         methods:{
 
+          //注册
+          submitregistered(){
+            this.$router.push("/Registered")
+          },
+
           // 监听 添加用户对话框的关闭事件
           addDialogClosed () {
             this.$refs.addUserFormRef.resetFields()
@@ -74,20 +89,36 @@
                 this.captchaUrl = '/captcha?time='+new Date();
             },
             submitLogin(){
+                //this.$refs.loginForm.validate((valid) => {
+                    //if (valid) {
+                      let params = new URLSearchParams()
+                      params.append('customerPhone', this.loginForm.username)
+                      params.append('customerPassword', this.loginForm.password)
+                      /* 提交    就是直接调用方法就可以  */
+                      getLoginStatus(params).then((res) => {
+                        if (res.code == 1) {
+                            this.$message({
+                                message: '嘉援欢迎您！',
+                                type: 'success'
+                            });
+                          this.$router.push("/System_Home_Consume")
+                        } else {
+                          this.$message.error('错了哦，请输入完整信息');
+                          return false;
+                        }
+                      });
 
-                this.$refs.loginForm.validate((valid) => {
-                    if (valid) {
-                      this.$router.push("/System_Home_Consume")
-                        this.$message({
-                            message: '嘉援欢迎您！',
-                            type: 'success'
-                        });
-                    } else {
-                        console.log('error submit!!');
-                        this.$message.error('错了哦，请输入完整信息');
-                        return false;
-                    }
-                });
+                      // this.$router.push("/System_Home_Consume")
+                      //   this.$message({
+                      //       message: '嘉援欢迎您！',
+                      //       type: 'success'
+                      //   });
+                   // } else {
+                     //   console.log('error submit!!');
+                     //   this.$message.error('错了哦，请输入完整信息');
+                     //   return false;
+                   // }
+               // });
             }
         }
     }
@@ -140,6 +171,13 @@
     font-weight: 600;
     color: #000000;
     box-shadow: 0 0 25px #cac6c6;
+  }
+
+  .forgetpassword{
+    margin-left: 0px;
+  }
+
+  .registeredButton{
   }
 
 </style>
