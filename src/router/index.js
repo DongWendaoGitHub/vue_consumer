@@ -18,6 +18,9 @@ import UpdateCustomers from "../views/customers/UpdateCustomers";
 import AddDrivers from "../views/drivers/AddDrivers";
 import SelectDrivers from "../views/drivers/SelectDrivers";
 import UpdateDrivers from "../views/drivers/UpdateDrivers";
+//引入顾客首页
+import HomeCustomer from "../views/customer_version/HomeCustomer";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -34,6 +37,43 @@ const routes = [
     component: Registered
   }
   ,
+  {
+    path: '/HomeCustomer',
+    name: '顾客首页',
+    component: HomeCustomer,
+    children:[
+      {
+        path: '/CustomerInfo',
+        component:resolve => require(['../views/customer_version/CustomerInfo.vue'], resolve),
+      },
+      {
+        path: '/Trailer',
+        component:resolve => require(['../views/customer_version/Trailer.vue'], resolve),
+      }
+      ,
+      {
+        path: '/CallUp',
+        component:resolve => require(['../views/customer_version/CallUp.vue'], resolve),
+      }
+      ,
+      {
+        path: '/OilTransfer',
+        component:resolve => require(['../views/customer_version/OilTransfer.vue'], resolve),
+      }
+      ,
+      {
+        path: '/Tires',
+        component:resolve => require(['../views/customer_version/Tires.vue'], resolve),
+      }
+      ,
+      {
+        path: '/CustomerOrder',
+        component:resolve => require(['../views/customer_version/CustomerOrder.vue'], resolve),
+      }
+    ]
+  }
+  ,
+
   //2  管理员
   {
     path: '/system_home_consume',

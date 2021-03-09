@@ -55,8 +55,8 @@
                 /*new Date()随时随地最新的时间*/
                 captchaUrl:'/captcha?time='+new Date(), /*加time参数，不加可能看不清或者想要更换验证码时无法接收到刷新的验证码*/        /*验证码*/
                 loginForm:{
-                    username:'',
-                    password:'',
+                    username:'17685841305',
+                    password:'www123',
                   //  code:'aaa'              /*验证码*/
                 },
                 checked:true,
@@ -101,9 +101,10 @@
                                 message: '嘉援欢迎您！',
                                 type: 'success'
                             });
-                          this.$router.push("/System_Home_Consume")
+                          this.$router.push("/HomeCustomer")
+                          // this.$router.push("/HomeCustomer")
                         } else {
-                          this.$message.error('错了哦，请输入完整信息');
+                          this.$message.error('错了哦，请输入完整信息或注册');
                           return false;
                         }
                       });
