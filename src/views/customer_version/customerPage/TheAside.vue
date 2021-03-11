@@ -6,7 +6,7 @@
       class="sidebar-el-menu"
       :default-active="onRoutes"
       :collapse="collapse"
-      background-color="#334256"
+      background-color="#8cc5ff"
       text-color="#ffffff"
       active-text-color="#20a0ff"
       router
@@ -36,33 +36,33 @@
         /*里面菜单的内容*/
         items:[
           {
-            icon: 'el-icon-setting',/*图标*/
+            icon: 'el-icon-menu',/*图标*/
             index:'CustomerInfo',    /*指向页面*/
             title:'嘉援为您服务'
           }
           ,
           {
-            icon: 'el-icon-menu',/*图标*/
+            icon: 'el-icon-setting',/*图标*/
             index:'Trailer',    /*指向页面*/
             title:'拖车'
           }
           ,
           {
-            icon: 'el-icon-menu',/*图标*/
+            icon: 'el-icon-setting',/*图标*/
             index:'CallUp',    /*指向页面*/
             title:'搭电'
           }
           ,
           {
-            icon: 'el-icon-menu',/*图标*/
+            icon: 'el-icon-setting',/*图标*/
             index:'OilTransfer',    /*指向页面*/
             title:'送油'
           }
           ,
           {
-            icon: 'el-icon-menu',/*图标*/
+            icon: 'el-icon-setting',/*图标*/
             index:'Tires',    /*指向页面*/
-            title:'轮胎'
+            title:'换胎'
           }
           ,
           {
@@ -104,7 +104,7 @@
 }
 
   .sidebar-el-menu:not(.el-menu--collapse){/*not(el-menu--collapse    只有当collapse是false 的时候才使用*/
-    width: 140px;  /*左侧菜单宽度*/
+    width: 150px;  /*左侧菜单宽度*/
   }
 
   /*循环的样式是100%  消除右边多出来的竖横，加下面的属性*/

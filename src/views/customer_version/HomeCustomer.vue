@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="background_home">
     <!--头部会对左侧菜单有控制-->
     <The-header></The-header>
     <the-aside></the-aside><!--左侧菜单需要给header留出一点空间-->
@@ -21,5 +21,8 @@
 </script>
 
 <style scoped>
+.background_home{
+  background-color: #dff3ff;
 
+}
 </style>

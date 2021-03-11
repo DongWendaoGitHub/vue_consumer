@@ -21,15 +21,27 @@ import UpdateDrivers from "../views/drivers/UpdateDrivers";
 //引入顾客首页
 import HomeCustomer from "../views/customer_version/HomeCustomer";
 
+import HomePage from "../views/customer_version/customer_view/HomePage";
+
+import FirstIndex from "../views/customer_version/customer_view/FirstIndex";
+import CustomerEntrance from "../views/customer_version/customer_view/CustomerEntrance";
+
 Vue.use(VueRouter)
 
 const routes = [
   //0  登陆
   {
     path: '/',
-    name: '登陆',
+    name: '登陆入口',
+    component: CustomerEntrance
+  },
+
+  {
+    path: '/Login',
+    name: '顾客主页',
     component: Login
   },
+
   //1   注册
   {
     path: '/Registered',
@@ -38,9 +50,22 @@ const routes = [
   }
   ,
   {
+    path: '/HomePage',
+    name: '顾客主页',
+    component: HomePage
+  }
+  ,
+  {
+    path: '/FirstIndex',
+    name: '主页',
+    component: FirstIndex
+  }
+  ,
+  {
     path: '/HomeCustomer',
     name: '顾客首页',
     component: HomeCustomer,
+    redirect: '/CustomerInfo',
     children:[
       {
         path: '/CustomerInfo',
