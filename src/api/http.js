@@ -7,7 +7,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 //基础url
 
 
-axios.defaults.baseURL = "http://127.0.0.1:8081/customer";
+axios.defaults.baseURL = "http://8.131.75.15:8081/customer";
 
 //访问回来后，响应拦截器
 axios.interceptors.response.use(

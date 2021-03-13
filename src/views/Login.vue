@@ -24,7 +24,7 @@
 
           <el-form-item>
             <el-checkbox v-model="checked" class="loginRemember">记住密码</el-checkbox>
-            <el-button type="primary" class="loginButton" @click="submitLogin">登陆</el-button>
+            <el-button style="float:right" type="primary" class="loginButton" @click="submitLogin">登陆</el-button>
           </el-form-item>
 
           <el-form-item>
@@ -142,8 +142,8 @@
     .loginContainer{
         border-radius: 15px;
         background-clip: padding-box;     /*背景*/
-        margin: 188px auto;               /*边距*/
-        width: 350px;
+        margin: 13% 20% 10% 34%;               /*边距*/
+        width: 25%;
         padding: 15px 35px 15px 35px;     /*边距*/
         background: #fff;                 /*背景颜色*/
         border: 1px solid #eaeaea;        /*边框*/
@@ -158,18 +158,18 @@
 
     /*登录按钮*/
     .loginButton{
-        margin-left: 195px;
+
     }
 
+    /*登录验证码*/
     .loginCode{
-        margin-right: 5px;
-        width: 180px;
+
     }
   .jiayuan-title{
     position: absolute;
     top: 50%;
     width: 100%;
-    margin-top: -230px;
+    margin-top: -18%;
     text-align: center;
     font-size: 30px;
     font-weight: 600;
@@ -182,6 +182,7 @@
   }
 
   .registeredButton{
+
   }
 
 </style>

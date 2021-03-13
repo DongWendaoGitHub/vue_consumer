@@ -63,11 +63,11 @@
           if (valid) {
             // alert('创建成功!');
             //    给后台,调SpringboottestApplication
-            axios.post('http://127.0.0.1:8081/customer/customers/insertCustomers',this.ruleForm).then(function (resp) {
+            axios.post('http://8.131.75.15:8081/customer/customers/insertCustomers',this.ruleForm).then(function (resp) {
               if(resp.data = "success"){
                 // alert("添加成功")
                 _this.$message('注册成功');
-                _this.$router.push(('/'));//跳转到添加后的界面
+                _this.$router.push(('/Login'));//跳转到添加后的界面
               }
             })
           } else {

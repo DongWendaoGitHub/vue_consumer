@@ -51,7 +51,7 @@
           if (valid) {
             // alert('创建成功!');
             //    给后台,调SpringboottestApplication
-            axios.post('http://127.0.0.1:8081/customer/customers/insertCustomers',this.ruleForm).then(function (resp) {
+            axios.post('customers/insertCustomers',this.ruleForm).then(function (resp) {
               if(resp.data = "success"){
                 // alert("添加成功")
                 _this.$message('成功创建客户信息');

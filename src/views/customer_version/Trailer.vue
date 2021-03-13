@@ -36,7 +36,7 @@
 
 <style scoped>
 .trailer{
-  margin-left:142px;
+  margin-left:9.4%;
 }
   .trailer-title{
     position: absolute;
